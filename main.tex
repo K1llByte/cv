@@ -1,0 +1,259 @@
+%-------------------------------------
+% LaTeX Resume for Software Engineers
+% Template Author : Leslie Cheng
+% License : MIT
+%-------------------------------------
+
+% Keywords:
+% - Systems programming
+% - Computer Graphics
+
+\documentclass[letterpaper,12pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage{ifxetex}
+\ifxetex
+  \usepackage{fontspec}
+  \usepackage[xetex]{hyperref}
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[pdftex]{hyperref}
+\fi
+\usepackage{fontawesome}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{tabularx}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Jorge Mota}
+\def \subtitle {}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://linkedin.com/in/jojomota/}
+\def \linkedintext {/jojomota}
+
+\def \emailicon {\faEnvelope}
+\def \emaillink {mailto:jorgefranciscomota@gmail.com}
+\def \emailtext {jorgefranciscomota@gmail.com}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/k1llbyte}
+\def \githubtext {/k1llbyte}
+
+\def \websiteicon {\faGlobe}
+\def \websitelink {https://gh.killbyte.xyz/}
+\def \websitetext {gh.killbyte.xyz}
+
+\def \headertype {\doublecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-0pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{1c1c1c}
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+%------------------------------------------------------------------------------------------------------------------- 
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.1in}
+
+% Define the link colours
+\hypersetup{
+    colorlinks=true,
+    urlcolor=links,
+}
+
+% Set the margin alignment 
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-------------------------
+% Custom commands
+
+% Sections
+\renewcommand{\section}[2]{\vspace{5pt}
+  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2\hspace{7pt}}}}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+      \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+    \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+      \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \end{tabularx}\vspace{-6pt}
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+  \item[]\small{
+    \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+  }
+}
+
+% Double column header
+\newcommand{\doublecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#4} & {\small#1} \\
+        {\small#5} & {\small#2} \\
+        {\small#6} & {\small#3}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{35}{45}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+        {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\linkedin}{\github}{\website}{\phone}{\email}{} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\section{}{Education}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {University of Minho}{2017 -- 2023}
+      {Integrated Master's Degree in Computer Engineering}{Braga, Portugal}
+    \resumeItemListStart
+      \resumeItem {Specialized in Cryptography and Computer Graphics}
+      \resumeItem {\underline{Master Thesis} High Performance Fourier Transforms on GPUs}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\section{}{Experience}
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {Crytek}{Mar. 2023 -- Present}
+      {Engine Programmer}{Remote}
+    \resumeItemListStart
+      \resumeItem {Participated in maintaining and evolving CryEngine, with contributions made to the development of Hunt: Showdown.}
+      \resumeItem {Contributed to various engine subsystems including the Entity System, Visual Scripting, Sandbox, and Rendering components.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTSDL
+      {LVEngine}{Jun. 2018 -- Jul. 2018}
+      {Summer Internship}{Porto, Portugal}
+    \resumeItemListStart
+      \resumeItem {Developed a recommendation engine service focusing on predicting correlations between products and users, determining product similarity, and employing hybrid methodologies.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+%-------------------------------------------------- PROJECTS --------------------------------------------------
+\section{}{Projects}
+
+  \resumeEntryStart
+    \resumeEntryTD{Computer Graphics}{}
+    \resumeItemListStart
+      \resumeItem {\underline{Kazan Engine} A Vulkan powered graphics engine written in C++ designed to delve into the intricacies of graphics and game engine architecture.}
+      \resumeItem {\underline{Path Tracer} A multithreaded path tracer written in C++ from scratch.}
+      \resumeItem {\underline{CG Project} 3D Rendering Engine written in C++ with OpenGL/FreeGLUT.}
+      \resumeItem {\underline{Computer Vision and Post proccessing} some algorithms written in Matlab.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD{Services}{}
+    \resumeItemListStart
+      \resumeItem {\underline{Adotie} A Mobile App for animal adoption made with a backend written in Rust with actix-web.}
+      \resumeItem {\underline{TicketNow} Ticket Selling app using Python Flask and Xamarim.}
+      \resumeItem {\underline{Eduasis} A resource sharing educational platform using ExpressJS and MongoDB.}
+      \resumeItem {\underline{Read2Be} A Book management WebApp made with a backend written in ExpressJS with MongoDB.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+  \resumeEntryStart
+    \resumeEntryTD{Other}{}
+    \resumeItemListStart
+      \resumeItem {\underline{Anonymous Gateway} A protocol that enables safe anonymous comunication between peers through an overlay network, inspired by TOR.}
+      \resumeItem {\underline{Pepperoni} A terminal based P2P chat application with dynamic peer discovery.}
+    \resumeItemListEnd
+  \resumeEntryEnd
+
+%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
+\section{}{Skills}
+ \resumeEntryStart
+  \resumeEntryS{Programming} {C++, C, Rust, Python, GLSL/HLSL, Vulkan, CUDA}
+  \resumeEntryS{Languages} {English, Portuguese}
+ \resumeEntryEnd
+
+\end{document}
